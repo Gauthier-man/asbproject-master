@@ -1,0 +1,23 @@
+{# templates/blog/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog
+{% endblock %}
+
+{% block body %}
+	<h1>Blog</h1>
+
+	<ul>
+		{% for article in articles %}
+			<li>
+				<a href="{{ path('blog_show', {'id': article.id}) }}">
+					{{ article.title }}
+				</a>
+				-
+				{{ article.createdAt|date('d/m/Y') }}
+			</li>
+		{% else %}
+			<li>Aucun article publié.</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

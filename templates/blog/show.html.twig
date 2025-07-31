@@ -1,0 +1,22 @@
+{# templates/blog/show.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ article.title }}
+{% endblock %}
+
+{% block body %}
+	<h1>{{ article.title }}</h1>
+	<p>
+		<em>Publié le
+			{{ article.createdAt|date('d/m/Y') }}</em>
+	</p>
+
+	<img src="{{ asset('uploads/articles/' ~ article.imagePath) }}" alt="{{ article.title }}" style="max-width: 100%; height: auto;">
+
+	<div>
+		{{ article.content|raw }}
+	</div>
+
+	<a href="{{ path('blog_index') }}">Retour à la liste</a>
+{% endblock %}
