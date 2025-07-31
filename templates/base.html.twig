@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Atelier Structure Bois
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="{{ asset('style.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('login.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('account.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('espace_admin.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('realisations.css') }}"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com"/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+		{# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> #}
+
+		{% block stylesheets %}{% endblock %}
+
+
+	</head>
+	<body>
+
+		<div class="header-bg">
+			<header class="header">
+				<div class="logo">
+					<img src="img/logo.png" alt="Atelier Bois Logo"/>
+				</div>
+				<nav class="nav">
+					<a href="/" class="active">ACCUEIL</a>
+					<a href="/realisations">RÉALISATIONS</a>
+					<a href="#">PRODUITS</a>
+					<a href="#">MODÈLES</a>
+					<a href="#">À PROPOS</a>
+					<a href="#">CONTACT</a>
+				</nav>
+
+				<div class="profile-icon">
+					{% if app.user %}
+						<div class="dropdown">
+							{% if app.user.profileImage %}
+								<img src="{{ asset('uploads/profiles/' ~ app.user.profileImage) }}" alt="Profil" class="profile-avatar dropdown-toggle"/>
+							{% else %}
+								<div class="profile-letter dropdown-toggle">
+									{{ app.user.prenom[:1]|upper }}
+								</div>
+							{% endif %}
+							<div class="dropdown-menu">
+								<span>Bonjour,
+									{{ app.user.prenom }}</span>
+								{% if is_granted('ROLE_ADMIN') %}
+									<a href="{{ path('admin_devis_list') }}">Espace Admin</a>
+								{% else %}
+									<a href="{{ path('app_account') }}">Mon espace</a>
+								{% endif %}
+
+								<a href="{{ path('app_logout') }}">Déconnexion</a>
+							</div>
+						{% else %}
+							<a href="{{ path('app_login') }}">
+								<i class="fa-regular fa-user"></i>
+								Se connecter
+							</a>
+						{% endif %}
+					</div>
+
+				</header>
+			</div>
+			{% block body %}{% endblock %}
+			{% block javascripts %}
+				<script src="{{ asset('scroll.js') }}"></script>
+				<script src="{{ asset('auth.js') }}"></script>
+			{% endblock %}
+		</body>
+	</body>
+</html>

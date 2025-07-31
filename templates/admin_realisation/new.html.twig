@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter une Réalisation
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h2>Ajouter une Réalisation</h2>
+
+		{{ form_start(form) }}
+		{{ form_row(form.category) }}
+		{{ form_row(form.imageFile) }}
+
+		<button class="btn btn-primary mt-3">Enregistrer</button>
+		<a href="{{ path('admin_realisation_index') }}" class="btn btn-secondary mt-3">Annuler</a>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

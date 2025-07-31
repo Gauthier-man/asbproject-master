@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block title %}Admin - Réalisations
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h2>Gestion des Réalisations</h2>
+
+		<a href="{{ path('admin_realisation_new') }}" class="btn btn-success mb-3">➕ Ajouter</a>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Catégorie</th>
+					<th>Image</th>
+					<th>Date</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for r in realisations %}
+					<tr>
+						<td>{{ r.category }}</td>
+						<td><img src="{{ asset('uploads/realisations/' ~ r.imagePath) }}" style="height: 80px;"></td>
+						<td>{{ r.createdAt|date('d/m/Y') }}</td>
+						<td>
+							<a href="{{ path('admin_realisation_edit', { id: r.id }) }}" class="btn btn-sm btn-primary">✏️</a>
+							<a href="{{ path('admin_realisation_delete', { id: r.id }) }}" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer cette réalisation ?');">🗑️</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4" class="text-muted text-center">Aucune réalisation.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du devis{% endblock %}
+
+{% block body %}
+<h2>Détails du devis #{{ devis.id }}</h2>
+
+<ul>
+    <li><strong>Nom :</strong> {{ devis.nom }}</li>
+    <li><strong>Email :</strong> {{ devis.email }}</li>
+    <li><strong>Localisation :</strong> {{ devis.localisation }}</li>
+    <li><strong>Type de projet :</strong> {{ devis.typeProjet }}</li>
+    <li><strong>Surface :</strong> {{ devis.surface }}</li>
+    <li><strong>Délai :</strong> {{ devis.delai }}</li>
+    <li><strong>Description :</strong> {{ devis.description }}</li>
+    <li><strong>Utilisateur :</strong> {{ devis.user.prenom }} {{ devis.user.nom }}</li>
+</ul>
+
+<a href="{{ path('admin_devis_list') }}">⬅ Retour à la liste</a>
+{% endblock %}

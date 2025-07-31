@@ -1,0 +1,22 @@
+{# templates/components/galerie_partial.html.twig #}
+<div class="filters">
+	<button class="filter-btn" data-category="all">Toutes</button>
+	<button class="filter-btn" data-category="charpente">Charpente</button>
+	<button class="filter-btn" data-category="maison-ossature-bois">Ossature</button>
+	<button class="filter-btn" data-category="amenagement-exterieur">Aménagements Extérieurs</button>
+	<button class="filter-btn" data-category="escaliers">Escaliers</button>
+</div>
+
+<div class="gallery" style="display: flex; flex-wrap: wrap; justify-content: space-between; row-gap: 2rem; margin-top: 2rem">
+	{% for realisation in realisations %}
+		<div class="realisation" data-category="{{ realisation.category|lower|replace({ ' ': '-', 'é': 'e', 'è': 'e', 'ê': 'e', 'à': 'a', 'â': 'a' }) }}" style="display: none;">
+			<img src="{{ asset('uploads/realisations/' ~ realisation.imagePath) }}" alt="Réalisation" class="realisation-img" style="width: 300px; height: 400px; object-fit: cover;">
+		</div>
+	{% endfor %}
+</div>
+
+{% if showLoadMore %}
+	<div style="text-align: center; margin-top: 20px;">
+		<button id="loadMoreBtn" style="padding: 10px 20px;">Afficher plus de photos</button>
+	</div>
+{% endif %}

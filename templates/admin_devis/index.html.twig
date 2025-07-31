@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demandes de devis reçues
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h2 class="mb-4 fw-bold text-center">Demandes de devis reçues</h2>
+		<p class="text-center mb-4">
+			Vous pouvez aussi gérer vos
+			<a href="{{ path('admin_realisation_index') }}">réalisations</a>
+			depuis cette interface.
+		</p>
+
+		<div class="table-responsive table-container">
+			<table class="table table-bordered align-middle mb-0">
+				<thead class="table-light">
+					<tr>
+						<th>Client</th>
+						<th>Projet</th>
+						<th>Surface</th>
+						<th>Lieu</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for d in devis %}
+						<tr>
+							<td>{{ d.user.prenom }}
+								{{ d.user.nom }}</td>
+							<td>{{ d.typeProjet }}</td>
+							<td>{{ d.surface ?? 'N/A' }}
+								m²</td>
+							<td>{{ d.localisation }}</td>
+							<td>
+								{% if d.status == 'envoye' %}
+									<span class="badge bg-success">Devis envoyé</span>
+								{% else %}
+									<span class="badge bg-primary">En cours d'étude</span>
+								{% endif %}
+							</td>
+							<td>
+								<a href="{{ path('admin_devis_show', { id: d.id }) }}" class="btn btn-sm btn-primary">Voir / Traiter</a>
+								<a href="{{ path('admin_devis_delete', { id: d.id }) }}" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer ce devis ?');">Supprimer</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6" class="text-center text-muted">Aucun devis trouvé.</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

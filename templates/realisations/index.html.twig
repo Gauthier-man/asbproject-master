@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<div style="max-width: 1400px; margin: auto; padding: 20px;">
+		<h1>Galerie des réalisations</h1>
+
+		<div class="filters">
+			<button class="filter-btn" data-category="all">Toutes</button>
+			<button class="filter-btn" data-category="charpente">Charpente</button>
+			<button class="filter-btn" data-category="maison-ossature-bois">Ossature</button>
+			<button class="filter-btn" data-category="amenagement-exterieur">Aménagements Extérieurs</button>
+			<button class="filter-btn" data-category="escaliers">Escaliers</button>
+		</div>
+
+		<div class="gallery" style="display: flex; flex-wrap: wrap; justify-content: space-between; row-gap: 2rem; margin-top: 2rem">
+			{% for realisation in realisations %}
+				<div class="realisation" data-category="{{ realisation.category|lower|replace({ ' ': '-', 'é': 'e', 'è': 'e', 'ê': 'e', 'à': 'a', 'â': 'a' }) }}" style="display: none;">
+					<img src="{{ asset('uploads/realisations/' ~ realisation.imagePath) }}" alt="Réalisation" class="realisation-img" style="width: 300px; height: 400px; object-fit: cover;">
+				</div>
+			{% endfor %}
+		</div>
+
+		<div style="text-align: center; margin-top: 20px;">
+			<button id="loadMoreBtn" style="padding: 10px 20px;">Afficher plus de photos</button>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		const buttons = document.querySelectorAll('.filter-btn');
+const realisations = document.querySelectorAll('.realisation');
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+let currentCategory = 'all';
+let visibleCount = 16;
+
+function showImages() {
+let count = 0;
+
+realisations.forEach(real => {
+const category = real.dataset.category;
+const match = (currentCategory === 'all' || category === currentCategory);
+
+if (match && count < visibleCount) {
+real.style.display = 'block';
+count++;
+} else {
+real.style.display = 'none';
+}
+});
+
+// Vérifie s’il reste des images à afficher
+const total = Array.from(realisations).filter(real => currentCategory === 'all' || real.dataset.category === currentCategory).length;
+
+if (visibleCount >= total) {
+loadMoreBtn.style.display = 'none';
+} else {
+loadMoreBtn.style.display = 'inline-block';
+}
+}
+
+// Quand on clique sur un bouton de filtre
+buttons.forEach(button => {
+button.addEventListener('click', () => {
+currentCategory = button.dataset.category;
+visibleCount = 16; // Réinitialise à 16 au changement de filtre
+showImages();
+});
+});
+
+// Quand on clique sur "Afficher plus"
+loadMoreBtn.addEventListener('click', () => {
+visibleCount += 16;
+showImages();
+});
+
+// Affiche les premières images au chargement
+showImages();
+	</script>
+{% endblock %}
