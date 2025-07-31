@@ -12,9 +12,17 @@ html {
 
 body {
   font-family: Arial, sans-serif;
-  /* background: #f4e2ba; */
-   padding-top: 250px;
+  padding-top: 250px;
+  background-image: url('img/background-pattern.png');
+  background-repeat: repeat;
+  background-size: 206px 206px;
+  position: relative;
+  z-index: 0;
 }
+
+
+
+
 
 
 
@@ -130,55 +138,148 @@ body {
 }
 
 
-.hero {
-  position: relative;
-  background-image: url('img/ossature_bois.jpeg'); /* Remplace par ton image réelle */
-  background-size: cover;
-  background-position: center;
-  height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-   z-index: 0;
-}
+ .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px 0;
+        flex-wrap: wrap;
+        max-width: 1300px;
+        margin: auto;
+      }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Assombrissement ajustable */
-  z-index: 1;
-}
+      .hero-left {
+        flex: 1;
+        max-width: 600px;
+      }
 
-.hero-overlay {
-  text-align: center;
-  color: white;
-  padding: 20px;
-  /* background: rgba(0, 0, 0, 0.4);  */
-  border-radius: 10px;
-   text-shadow: 1px 1px 2px black;
-}
+      .hero-left h1 {
+        font-family: "Prompt", sans-serif;
+        font-size: 44px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #000;
+      }
 
-.hero-overlay h2 {
-  font-size: 36px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
+      .hero-left h1 span {
+        color: #b1cb3b;
+      }
 
-.hero-overlay h1 {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+      .underline {
+        display: inline-block;
+        width: 400px;
+        height: 91px;
+        background-image: url("img/hero/underline.png");
+        background-size: cover;    
+        background-position: center;      
+        background-repeat: no-repeat;
+        margin-bottom: 20px;
+      }
+
+      .hero-left ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 30px;
+      }
+
+      .hero-left ul li {
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: #333;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-left ul li::before {
+        content: "✔️";
+        margin-right: 10px;
+        color: #67c86e;
+      }
+
+      .btn-devis {
+        background-color: #b1cb3b;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+      }
+
+      .btn-devis:hover {
+        background-color: #9db734;
+      }
+
+      .hero-right {
+      
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin-top: 30px;
+      }
+
+      .image-container {
+        position: relative; /* important pour que les enfants en position absolute se basent sur ce conteneur */
+        background: linear-gradient(45deg, rgba(145, 161, 130, 0.8), rgba(145, 161, 130, 0.8)), url("img/hero/y.jpeg");
+        border-radius: 5px;
+        padding: 100px;
+        width: 543px;
+       height: 469px;
+      }
+
+      /* Image en position absolue à gauche, centrée verticalement */
+      .image-left {
+        position: absolute;
+        left: -214px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 376px;
+        height: 265px;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        object-fit: cover;
+      }
+
+      /* Image en bas à droite */
+      .image-bottom-right {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 221px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        object-fit: cover;
+      }
+
+      .image-container img {
+        /* width: 180px; */
+        /* height: auto; */
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        object-fit: cover;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-right {
+          margin-top: 40px;
+        }
+
+        .image-container {
+          justify-content: center;
+        }
+      }
 
 
 .presentation {
   padding: 60px 20px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   background-image: url('public/img/background-pattern.png');
   background-repeat: repeat;
   background-size: 206px 206px;
@@ -345,7 +446,7 @@ body {
 
 
 .fabrication {
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
   padding: 80px 20px;
    background-image: url('public/img/background-pattern.png');
   background-repeat: repeat;
@@ -637,7 +738,7 @@ body {
 
 
 .devis-section {
-  background-color: #fdfdfd;
+  /* background-color: #fdfdfd; */
   padding: 80px 20px;
    background-image: url('public/img/background-pattern.png');
   background-repeat: repeat;
@@ -846,7 +947,7 @@ body {
 
 
 .gallery-section {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   /* padding: 40px 20px; */
   text-align: center;
   padding-top: 488px;
@@ -888,7 +989,7 @@ body {
 
 
 .recent-posts {
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 60px 20px;
   text-align: center;
    background-image: url('public/img/background-pattern.png'); 
