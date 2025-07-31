@@ -442,25 +442,25 @@ body {
 /* Appliquer une image différente par carte */
 .service-card.maison {
   background-image:
-    linear-gradient(90deg, #526F36 50%, rgba(0, 0, 0, 0) 200%),
+    linear-gradient(90deg, #759457 50%, rgba(0, 0, 0, 0) 200%),
     url('img/ossature.png');
 }
 
 .service-card.charpente {
   background-image:
-    linear-gradient(90deg, #526F36 50%, rgba(0, 0, 0, 0) 200%),
+    linear-gradient(90deg, #759457 50%, rgba(0, 0, 0, 0) 200%),
     url('img/charpente.png');
 }
 
 .service-card.amenagements {
    background-image:
-    linear-gradient(90deg, #526F36 50%, rgba(0, 0, 0, 0) 200%),
+    linear-gradient(90deg, #759457 50%, rgba(0, 0, 0, 0) 200%),
     url('img/amenagement_exterieur.png');
 }
 
 .service-card.escaliers {
     background-image:
-    linear-gradient(90deg, #526F36 50%, rgba(0, 0, 0, 0) 200%),
+    linear-gradient(90deg, #759457 50%, rgba(0, 0, 0, 0) 200%),
     url('img/escaliers.png');
 }
 
