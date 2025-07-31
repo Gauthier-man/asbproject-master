@@ -1,0 +1,13 @@
+{# templates/admin_article/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h2>Ajouter un nouvel article</h2>
+
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button class="btn btn-primary mt-3">Enregistrer</button>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

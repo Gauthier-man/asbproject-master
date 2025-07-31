@@ -1,10 +1,10 @@
 {# templates/components/galerie_partial.html.twig #}
 <div class="filters">
-	<button class="filter-btn" data-category="all">Toutes</button>
-	<button class="filter-btn" data-category="charpente">Charpente</button>
-	<button class="filter-btn" data-category="maison-ossature-bois">Ossature</button>
-	<button class="filter-btn" data-category="amenagement-exterieur">Aménagements Extérieurs</button>
-	<button class="filter-btn" data-category="escaliers">Escaliers</button>
+	<button class="filter" data-category="all">Toutes</button>
+	<button class="filter" data-category="charpente">Charpente</button>
+	<button class="filter" data-category="maison-ossature-bois">Ossature</button>
+	<button class="filter" data-category="amenagement-exterieur">Aménagements Extérieurs</button>
+	<button class="filter" data-category="escaliers">Escaliers</button>
 </div>
 
 <div class="gallery" style="display: flex; flex-wrap: wrap; justify-content: space-between; row-gap: 2rem; margin-top: 2rem">
@@ -20,3 +20,59 @@
 		<button id="loadMoreBtn" style="padding: 10px 20px;">Afficher plus de photos</button>
 	</div>
 {% endif %}
+
+
+{% block javascripts %}
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+const filters = document.querySelectorAll('.filter-btn, .filter');
+const items = document.querySelectorAll('.realisation');
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+let category = 'all';
+let maxVisible = 16;
+
+// Affiche les images en fonction de la catégorie et du nombre max
+function updateGallery() {
+let shown = 0;
+
+items.forEach(item => {
+const itemCategory = item.dataset.category;
+
+if ((category === 'all' || itemCategory === category) && shown < maxVisible) {
+item.style.display = 'block';
+shown++;
+} else {
+item.style.display = 'none';
+}
+});
+
+// Affiche ou cache le bouton "Afficher plus"
+if (loadMoreBtn) {
+const totalInCategory = [... items].filter(i => category === 'all' || i.dataset.category === category).length;
+loadMoreBtn.style.display = (shown >= totalInCategory) ? 'none' : 'inline-block';
+}
+}
+
+// Gère les clics sur les filtres
+filters.forEach(btn => {
+btn.addEventListener('click', () => {
+category = btn.dataset.category || btn.textContent.trim().toLowerCase().replace(/\s/g, '-');
+maxVisible = 16;
+updateGallery();
+});
+});
+
+// Gère le bouton "Afficher plus"
+if (loadMoreBtn) {
+loadMoreBtn.addEventListener('click', () => {
+maxVisible += 16;
+updateGallery();
+});
+}
+
+// Affiche les premières images
+updateGallery();
+});
+	</script>
+{% endblock %}
