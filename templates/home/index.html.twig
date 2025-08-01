@@ -32,12 +32,12 @@
 				<h2>LES CHARPENTIERS  DONNE VIE  À VOS IDÉES</h2>
 				<p class="text-left">
 					Spécialisé dans la construction de maisons à ossature bois, charpentes et aménagements extérieurs à La
-																																																																																																																																																																																																																																																							            Réunion, Les Charpentiers vous accompagne depuis 2017 dans la réalisation de vos projets.
+																																																																																																																																																																																																																																																																	            Réunion, Les Charpentiers vous accompagne depuis 2017 dans la réalisation de vos projets.
 				</p>
 				<p class="text-left">
 					Grâce à notre savoir-faire artisanal et à notre atelier situé à proximité de la Route des Tamarins, nous
-																																																																																																																																																																																																																																																							            mettons en œuvre des solutions sur-mesure, adaptées à vos envies, à votre budget, et à l’environnement
-																																																																																																																																																																																																																																																							            réunionnais.
+																																																																																																																																																																																																																																																																	            mettons en œuvre des solutions sur-mesure, adaptées à vos envies, à votre budget, et à l’environnement
+																																																																																																																																																																																																																																																																	            réunionnais.
 				</p>
 			</div>
 
@@ -51,8 +51,8 @@
 					<div class="orange-line">
 						<p>
 							L’ossature bois offre une performance thermique exceptionnelle, une mise en œuvre rapide, et un chantier
-																																																																																																																																																																																																																																																																																																																																																									              propre. Plus qu’un matériau, le bois est un engagement : celui d’une construction durable, légère et
-																																																																																																																																																																																																																																																																																																																																																									              évolutive, pensée pour votre confort et celui des générations futures.
+																																																																																																																																																																																																																																																																																																																																																																							              propre. Plus qu’un matériau, le bois est un engagement : celui d’une construction durable, légère et
+																																																																																																																																																																																																																																																																																																																																																																							              évolutive, pensée pour votre confort et celui des générations futures.
 						</p>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 					<h3>Conception</h3>
 					<p>
 						Nous partons de vos idées, croquis, envies ou plans pour concevoir ensemble un avant-projet adapté à vos
-																																																																																																																																																																																																																																																																																																								              besoins.
+																																																																																																																																																																																																																																																																																																																				              besoins.
 					</p>
 				</div>
 				<div class="step-card">
@@ -80,7 +80,7 @@
 					<h3>Conseil</h3>
 					<p>
 						Notre équipe vous conseille dans le choix des essences de bois, des techniques constructives et des
-																																																																																																																																																																																																																																																																																																								              finitions.
+																																																																																																																																																																																																																																																																																																																				              finitions.
 					</p>
 				</div>
 				<div class="step-card">
@@ -99,11 +99,11 @@
 				<h3>FABRICATION LOCALE, DANS NOTRE ATELIER DE 300 M²</h3>
 				<p>
 					Tous nos éléments (murs, charpentes, panneaux) sont fabriqués dans notre atelier, en panneaux
-																																																																																																																																																																																																																																																							            manu-transportables, puis assemblés sur site.
+																																																																																																																																																																																																																																																																	            manu-transportables, puis assemblés sur site.
 				</p>
 				<p>
 					Cette méthode garantit une qualité constante, une grande réactivité, et un chantier rapide (quelques
-																																																																																																																																																																																																																																																							            semaines seulement).
+																																																																																																																																																																																																																																																																	            semaines seulement).
 				</p>
 			</div>
 			<div class="fabrication-image">
@@ -167,130 +167,102 @@
 		</div>
 	</section>
 
-	<section class="devis-section" id="devis">
-		<div class="devis-container">
-			<h2 class="devis-title">DEMANDER UN DEVIS</h2>
-			<p class="devis-subtitle">
-				Décrivez-nous votre projet en détail et recevez un devis personnalisé sous 48h. Notre équipe vous accompagne
-																																																																																																																																																																																																					          de la conception à la réalisation.
-			</p>
+	<section id="devis" class="devis-section">
+		{% include 'partials/formulaire_devis.html.twig' %}
+	</section>
 
-			{{ form_start(form) }}
-
-			{{ form_row(form.nom) }}
-			{{ form_row(form.email) }}
-			{{ form_row(form.localisation) }}
-			{{ form_row(form.typeProjet) }}
-			{{ form_row(form.surface) }}
-			{{ form_row(form.delai) }}
-			{{ form_row(form.description) }}
-
-			<button type="submit" class="btn-submit">Envoyer ma demande de devis</button>
-
-			{{ form_end(form) }}
-
-		</form>
-		{% for label, messages in app.flashes %}
-			{% for message in messages %}
-				<div class="flash-message flash-{{ label }}">
-					{{ message }}
-				</div>
-			{% endfor %}
-		{% endfor %}
-
-	</div>
-</section>
-<section class="contact-hero-section">
-	<div class="hero-overlay">
-		<p class="mini-title">OSSATURE BOIS</p>
-		<h2 class="main-title">
-			UNE SOLUTION ÉCOLOGIQUE, DURABLE ET ÉLÉGANTE,<br/>
-			PENSÉE POUR UN HABITAT EN HARMONIE AVEC SON ENVIRONNEMENT
-		</h2>
-	</div>
-
-	<div class="contact-container">
-		<div class="contact-image">
-			<img src="img\contact-bois.png" alt="Chantier ossature bois"/>
+	<section class="contact-hero-section">
+		<div class="hero-overlay">
+			<p class="mini-title">OSSATURE BOIS</p>
+			<h2 class="main-title">
+				UNE SOLUTION ÉCOLOGIQUE, DURABLE ET ÉLÉGANTE,<br/>
+				PENSÉE POUR UN HABITAT EN HARMONIE AVEC SON ENVIRONNEMENT
+			</h2>
 		</div>
-		<div class="contact-form-box">
-			<h2>Contactez-nous</h2>
-			<p>Prêt à donner vie à votre projet en bois ? Parlons-en ensemble.</p>
-			<form class="contact-form">
-				<input type="text" placeholder="Nom complet" required/>
-				<input type="email" placeholder="Email" required/>
-				<input type="tel" placeholder="Téléphone"/>
-				<textarea rows="5" placeholder="Votre message..." required></textarea>
-				<button type="submit" class="contact-btn">Envoyer le message</button>
-			</form>
-		</div>
-	</div>
-</section>
-<section class="gallery-section">
-	<div class="gallery-thumbnails">
-		<img src="img/thumb1.png" alt="Escalier bois"/>
-		<img src="img/thumb2.png" alt="Charpente"/>
-		<img src="img/thumb3.png" alt="Plafond bois"/>
-		<img src="img/thumb4.png" alt="Toiture bois"/>
-		<img src="img/thumb4.png" alt="Balcon bois"/>
-	</div>
-	<div class="gallery-main">
-		<img src="img/maison-bardage.png" alt="Maison ossature bois et béton"/>
-	</div>
-</section>
-<section class="recent-posts">
-	<h2 class="recent-title">PUBLICATIONS RÉCENTES</h2>
-	<div class="recent-grid">
-		{% for article in articles %}
-			<a href="{{ path('blog_show', { id: article.id }) }}">
-				<div class="post-card">
-					<img src="{{ asset('uploads/articles/' ~ article.imagePath) }}" alt="{{ article.title }}"/>
-					<div class="post-caption">{{ article.title }}</div>
-				</div>
-			</a>
-		{% else %}
-			<p>Aucun article pour le moment.</p>
-		{% endfor %}
-	</div>
-</section>
 
-<footer class="site-footer">
-	<div class="footer-columns">
-		<div class="footer-col">
-			<div class="logo">
-				<a href="/">
-					<img src="img/logo.png" alt="Atelier Bois Logo"/>
-				</a>
+		<div class="contact-container">
+			<div class="contact-image">
+				<img src="img\contact-bois.png" alt="Chantier ossature bois"/>
 			</div>
-			<p>
-				Spécialisé dans la construction de maisons à ossature bois, charpentes et aménagements extérieurs à La
-																																																																																																																																																																																																					            Réunion depuis 2017.
-			</p>
+			<div class="contact-form-box">
+				<h2>Contactez-nous</h2>
+				<p>Prêt à donner vie à votre projet en bois ? Parlons-en ensemble.</p>
+				<form class="contact-form">
+					<input type="text" placeholder="Nom complet" required/>
+					<input type="email" placeholder="Email" required/>
+					<input type="tel" placeholder="Téléphone"/>
+					<textarea rows="5" placeholder="Votre message..." required></textarea>
+					<button type="submit" class="contact-btn">Envoyer le message</button>
+				</form>
+			</div>
 		</div>
-		<div class="footer-col">
-			<h4>SERVICES</h4>
+	</section>
+	<section class="gallery-section">
+		<div class="gallery-thumbnails">
+			<img src="img/thumb1.png" alt="Escalier bois"/>
+			<img src="img/thumb2.png" alt="Charpente"/>
+			<img src="img/thumb3.png" alt="Plafond bois"/>
+			<img src="img/thumb4.png" alt="Toiture bois"/>
+			<img src="img/thumb4.png" alt="Balcon bois"/>
+		</div>
+		<div class="gallery-main">
+			<img src="img/maison-bardage.png" alt="Maison ossature bois et béton"/>
+		</div>
+	</section>
+	<section class="recent-posts">
+		<h2 class="recent-title">PUBLICATIONS RÉCENTES</h2>
+		<div class="recent-grid">
+			{% for article in articles %}
+				<a href="{{ path('blog_show', { id: article.id }) }}">
+					<div class="post-card">
+						<img src="{{ asset('uploads/articles/' ~ article.imagePath) }}" alt="{{ article.title }}"/>
+						<div class="post-caption">{{ article.title }}</div>
+					</div>
+				</a>
+			{% else %}
+				<p>Aucun article pour le moment.</p>
+			{% endfor %}
+		</div>
+	</section>
 
-			<a href="/realisations">Maisons à ossature bois</a>
-			<br/>
-			<a href="/realisations">Charpentes</a>
-			<br/>
-			<a href="/realisations">Escaliers</a>
-			<br/>
-			<a href="/realisations">Aménagement extérieur</a>
+	<footer class="site-footer">
+		<div class="footer-columns">
+			<div class="footer-col">
+				<div class="logo">
+					<a href="/">
+						<img src="img/logo.png" alt="Atelier Bois Logo"/>
+					</a>
+				</div>
+				<p>
+					Spécialisé dans la construction de maisons à ossature bois, charpentes et aménagements extérieurs à La
+																																																																																																																																																																																																															            Réunion depuis 2017.
+				</p>
+			</div>
+			<div class="footer-col">
+				<h4>SERVICES</h4>
+
+				<a href="/realisations">Maisons à ossature bois</a>
+				<br/>
+				<a href="/realisations">Charpentes</a>
+				<br/>
+				<a href="/realisations">Escaliers</a>
+				<br/>
+				<a href="/realisations">Aménagement extérieur</a>
+			</div>
+			<div class="footer-col">
+				<h4>CONTACT</h4>
+				<a href="tel:+262692592422">
+					<i class="fi fi-sr-phone-flip"></i>
+					06 92 59 24 22</a>
+				<br/>
+				<a href="mailto:lescharpentiers974@gmail.com">
+					<i class="fi fi-rr-envelope"></i>lescharpentiers974@gmail.com</a>
+				<br/>
+				<a href="https://maps.app.goo.gl/DwtkLpTMsWaDZkfp7" target="_blank">
+					<i class="fi fi-bs-marker"></i>ZAE de l'éperon, 27 Rue Bass. Massoute, 97435, La Réunion</a>
+			</div>
 		</div>
-		<div class="footer-col">
-			<h4>CONTACT</h4>
-			<a href="tel:+262692592422">
-				<i class="fi fi-sr-phone-flip"></i>
-				06 92 59 24 22</a>
-			<br/>
-			<a href="mailto:lescharpentiers974@gmail.com">
-				<i class="fi fi-rr-envelope"></i>lescharpentiers974@gmail.com</a>
-			<br/>
-			<a href="https://maps.app.goo.gl/DwtkLpTMsWaDZkfp7" target="_blank">
-				<i class="fi fi-bs-marker"></i>ZAE de l'éperon, 27 Rue Bass. Massoute, 97435, La Réunion</a>
-		</div>
-	</div>
-	<hr/>
-	<div class="footer-bottom">© 2025 Atelier Structure Bois. Tous droits réservés.</div>
-</footer>{% endblock %}
+		<hr/>
+		<div class="footer-bottom">© 2025 Atelier Structure Bois. Tous droits réservés.</div>
+	</footer>
+{% endblock %}

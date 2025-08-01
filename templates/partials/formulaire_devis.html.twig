@@ -1,0 +1,73 @@
+{# Inclure Bootstrap uniquement ici si ce n'est pas global #}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<section class="py-5 bg-light">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-7">
+				<div class="card border-0 shadow-sm rounded-4">
+					<div class="card-body p-5">
+
+						<h2 class="text-center mb-3">DEMANDER UN DEVIS</h2>
+						<p class="text-center text-muted mb-4">
+							Décrivez-nous votre projet en détail et recevez un devis personnalisé sous 48h.<br>
+							Notre équipe vous accompagne de la conception à la réalisation.
+						</p>
+
+						{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+						<div class="mb-3">
+							{{ form_label(form.nom, "Nom *") }}
+							{{ form_widget(form.nom, {'attr': {'class': 'form-control bg-light rounded-3 py-2'}}) }}
+						</div>
+
+						<div class="mb-3">
+							{{ form_label(form.email, "Email *") }}
+							{{ form_widget(form.email, {'attr': {'class': 'form-control bg-light rounded-3 py-2'}}) }}
+						</div>
+
+						<div class="mb-3">
+							{{ form_label(form.localisation, "Localisation *") }}
+							{{ form_widget(form.localisation, {'attr': {'class': 'form-control bg-light rounded-3 py-2'}}) }}
+						</div>
+
+						<div class="mb-3">
+							{{ form_label(form.typeProjet, "Type projet *") }}
+							{{ form_widget(form.typeProjet, {'attr': {'class': 'form-control bg-light rounded-3 py-2'}}) }}
+						</div>
+
+						<div class="mb-3">
+							{{ form_label(form.surface) }}
+							{{ form_widget(form.surface, {'attr': {'class': 'form-select bg-light rounded-3 py-2'}}) }}
+						</div>
+
+						<div class="mb-3">
+							{{ form_label(form.delai) }}
+							{{ form_widget(form.delai, {'attr': {'class': 'form-control bg-light rounded-3 py-2'}}) }}
+						</div>
+
+						<div class="mb-4">
+							{{ form_label(form.description) }}
+							{{ form_widget(form.description, {'attr': {'class': 'form-control bg-light rounded-3 py-2', 'rows': 4}}) }}
+						</div>
+
+						<button type="submit" class="btn btn-lg w-100 text-white" style="background-color: #592b12;">
+							Envoyer ma demande de devis
+						</button>
+
+						{{ form_end(form) }}
+
+						{% for label, messages in app.flashes %}
+							{% for message in messages %}
+								<div class="alert alert-{{ label }} mt-3" role="alert">
+									{{ message }}
+								</div>
+							{% endfor %}
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
