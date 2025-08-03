@@ -1,3 +1,5 @@
+
+
 /* Reset */
 * {
   margin: 0;
@@ -20,6 +22,9 @@ body {
   z-index: 0;
 }
 
+body.no-header {
+  padding-top: 0 !important; /* supprime le padding sur les pages admin */
+}
 
 
 
@@ -415,8 +420,9 @@ body {
 }
 
 .step-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.05);
 }
+
 
 .icon-circle {
   background-color: #4E822F;

@@ -3,6 +3,9 @@
 
 {% block body %}
 	<div class="container mt-5">
+		<a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mb-4">
+			← Retour au tableau de bord admin
+		</a>
 		<h2 class="mb-4">Articles du blog</h2>
 		<a href="{{ path('admin_article_new') }}" class="btn btn-success mb-3">Ajouter un article</a>
 		<div class="row">

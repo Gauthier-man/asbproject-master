@@ -4,6 +4,9 @@
 
 {% block body %}
 	<div class="container mt-5">
+		<a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mb-4">
+			← Retour au tableau de bord admin
+		</a>
 		<h2>Gestion des Réalisations</h2>
 
 		<a href="{{ path('admin_realisation_new') }}" class="btn btn-success mb-3">➕ Ajouter</a>

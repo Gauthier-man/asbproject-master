@@ -10,30 +10,54 @@ use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\EntityManagerInterface;
 
 use App\Entity\Devis;
+use App\Entity\User;
 use App\Form\DevisType;
 
 class DevisController extends AbstractController
 {
-    #[Route('/devis', name: 'app_devis', methods: ['GET', 'POST'])]
-    public function demanderDevis(Request $request, EntityManagerInterface $em, Security $security): Response
+    // src/Controller/DevisController.php
+
+    #[Route('/devis', name: 'app_devis')]
+    public function index(Request $request, EntityManagerInterface $em)
     {
         $devis = new Devis();
-        $devis->setCreatedAt(new \DateTime());
-        $devis->setUser($security->getUser());
+
+        $user = $this->getUser();
+        if ($user instanceof User) {
+            $devis->setEmail($user->getEmail());
+            $devis->setUser($user);
+        }
 
         $form = $this->createForm(DevisType::class, $devis);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em->persist($devis);
             $em->flush();
 
-            $this->addFlash('success', 'Votre demande de devis a bien été envoyée.');
-            return $this->redirectToRoute('app_account'); // redirige vers l’espace perso
+            // Redirection avec email
+            return $this->redirectToRoute('app_devis_thanks', [
+                'email' => $devis->getEmail()
+            ]);
         }
 
-        return $this->render('devis/demande.html.twig', [
+        return $this->render('devis/index.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    // src/Controller/DevisController.php
+
+    #[Route('/devis/merci', name: 'app_devis_thanks')]
+    public function merci(Request $request)
+    {
+        $email = $request->query->get('email');
+        $user = $this->getUser();
+
+        return $this->render('devis/merci.html.twig', [
+            'email' => $email,
+            'user' => $user,
         ]);
     }
 }

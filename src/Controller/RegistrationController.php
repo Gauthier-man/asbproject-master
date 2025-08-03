@@ -19,6 +19,13 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+
+        // Pré-remplir l'email si passé dans l'URL
+        $emailFromRequest = $request->query->get('email');
+        if ($emailFromRequest) {
+            $user->setEmail($emailFromRequest);
+        }
+
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -32,13 +39,26 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
+            // Lier les devis non liés qui ont le même email
+            $devisRepo = $entityManager->getRepository(\App\Entity\Devis::class);
+            $devisSansUser = $devisRepo->findBy([
+                'email' => $user->getEmail(),
+                'user' => null,
+            ]);
 
+            dd($devisSansUser);
+            foreach ($devisSansUser as $devis) {
+                $devis->setUser($user);
+            }
+
+            $entityManager->flush();
+            // -------------------------
+            // login automatique après inscription
             return $security->login($user, AppLoginAuthenticator::class, 'main');
         }
 
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
+            'registrationForm' => $form->createView(),
         ]);
     }
 }

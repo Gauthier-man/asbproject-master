@@ -1,4 +1,8 @@
 import './bootstrap.js';
+
+import 'animate.css';
+
+
 /*
  * Welcome to your app's main JavaScript file!
  *

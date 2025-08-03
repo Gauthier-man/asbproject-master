@@ -16,11 +16,13 @@ final class AccountController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $user = $security->getUser();
+
         $devisList = $devisRepository->findBy(['user' => $user], ['createdAt' => 'DESC']);
 
-        return $this->render('account/index.html.twig', [
 
-            'user' => $this->getUser(),
+
+        return $this->render('account/index.html.twig', [
+            'user' => $user,
             'devis' => $devisList,
         ]);
     }

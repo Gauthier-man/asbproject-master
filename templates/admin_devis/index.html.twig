@@ -9,12 +9,11 @@
 
 {% block body %}
 	<div class="container mt-5">
+		<a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mb-4">
+			← Retour au tableau de bord admin
+		</a>
 		<h2 class="mb-4 fw-bold text-center">Demandes de devis reçues</h2>
-		<p class="text-center mb-4">
-			Vous pouvez aussi gérer vos
-			<a href="{{ path('admin_realisation_index') }}">réalisations</a>
-			depuis cette interface.
-		</p>
+
 
 		<div class="table-responsive table-container">
 			<table class="table table-bordered align-middle mb-0">

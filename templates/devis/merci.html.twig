@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Merci pour votre demande
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="mb-3">✅ Merci pour votre demande de devis !</h1>
+		<p>Nous avons bien reçu votre demande.</p>
+
+		<hr>
+
+		{% if not user %}
+			<p>
+				🛠️ Pour suivre l’état de votre devis,
+				<strong>vous pouvez créer un compte en utilisant le même email</strong>
+				que vous venez d’utiliser :
+				<strong>{{ email }}</strong>.
+			</p>
+
+			<a href="{{ path('app_register', { email: email }) }}" class="btn btn-primary mt-3">
+				👉 Créer un compte maintenant
+			</a>
+		{% else %}
+			<p>Vous êtes déjà connecté, vous pouvez suivre vos devis depuis votre espace personnel.</p>
+		{% endif %}
+	</div>
+{% endblock %}

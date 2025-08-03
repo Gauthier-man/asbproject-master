@@ -14,7 +14,8 @@
 							Notre équipe vous accompagne de la conception à la réalisation.
 						</p>
 
-						{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+						{{ form_start(form, {'action': path('app_devis'), 'method': 'POST', 'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
 
 						<div class="mb-3">
 							{{ form_label(form.nom, "Nom *") }}

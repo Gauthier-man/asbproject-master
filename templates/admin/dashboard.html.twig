@@ -1,0 +1,75 @@
+{# templates/admin/dashboard.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de Bord Admin
+{% endblock %}
+
+{% block body %}
+
+	<div class="d-flex">
+		<div class="bg-dark text-white p-4" style="min-width: 220px; height: 100vh;">
+			<h5 class="fw-bold">Admin</h5>
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a href="{{ path('admin_devis_list') }}" class="nav-link text-white">Demandes de Devis</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{ path('admin_article_index') }}" class="nav-link text-white">Articles du Blog</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{ path('admin_realisation_index') }}" class="nav-link text-white">Réalisations</a>
+				</li>
+			</ul>
+			<hr class="text-secondary">
+			<a href="{{ path('app_home') }}" class="text-muted small">← Retour à l'accueil</a>
+		</div>
+
+		<div class="p-4 flex-fill">
+			<h2 class="mb-4 fw-bold">Tableau de Bord</h2>
+			<div class="row g-4">
+				<div class="col-md-4">
+					<div class="bg-white shadow-sm rounded p-3">
+						<h5 class="fw-bold">Demandes de Devis</h5>
+						<ul class="list-unstyled">
+							{% for devis in devisList %}
+								<li>Demande #{{ devis.id }}
+									-
+									{{ devis.status|capitalize }}</li>
+							{% else %}
+								<li class="text-muted">Aucune demande</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="bg-white shadow-sm rounded p-3">
+						<h5 class="fw-bold">Articles du Blog</h5>
+						<ul class="list-unstyled">
+							{% for article in articles %}
+								<li>{{ article.title }}</li>
+							{% else %}
+								<li class="text-muted">Aucun article</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="bg-white shadow-sm rounded p-3">
+						<h5 class="fw-bold">Réalisations</h5>
+						<ul class="list-unstyled">
+							{% for real in realisations %}
+								<li>{{ real.category }}
+									-
+									{{ real.createdAt|date('d/m/Y') }}</li>
+							{% else %}
+								<li class="text-muted">Aucune réalisation</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
