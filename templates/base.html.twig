@@ -39,16 +39,16 @@
 				<header class="header">
 					<div class="logo">
 						<a href="/">
-							<img src="img/logo.png" alt="Atelier Bois Logo"/>
+							<img src="{{ asset('img/logo.png') }}" alt="Atelier Bois Logo"/>
 						</a>
 					</div>
 					<nav class="nav">
-						<a href="/" class="active">ACCUEIL</a>
-						<a href="/realisations">RÉALISATIONS</a>
-						<a href="#">PRODUITS</a>
-						<a href="#">MODÈLES</a>
-						<a href="#">À PROPOS</a>
-						<a href="#">CONTACT</a>
+						<a href="{{ path('app_home') }}" class="{{ app.request.attributes.get('_route') == 'app_home' ? 'active-link' : '' }}">ACCUEIL</a>
+						<a href="{{ path('app_realisations') }}" class="{{ app.request.attributes.get('_route') == 'app_realisations' ? 'active-link' : '' }}">RÉALISATIONS</a>
+						<a href="#" class="">PRODUITS</a>
+						<a href="#" class="">MODÈLES</a>
+						<a href="{{ path('app_about') }}" class="{{ app.request.attributes.get('_route') == 'app_about' ? 'active-link' : '' }}">À PROPOS</a>
+						<a href="{{ path('app_contact') }}" class="{{ app.request.attributes.get('_route') == 'app_contact' ? 'active-link' : '' }}">CONTACT</a>
 					</nav>
 
 					<div class="profile-icon">
@@ -93,6 +93,8 @@
 					<script src="{{ asset('scroll.js') }}"></script>
 					<script src="{{ asset('auth.js') }}"></script>
 					<script src="{{ asset('filter_realisations.js') }}"></script>
+					<!-- ✅ CDN Tailwind -->
+					<script src="https://cdn.tailwindcss.com"></script>
 					<!-- AOS script -->
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 					<script>

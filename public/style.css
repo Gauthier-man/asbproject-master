@@ -136,6 +136,10 @@ body.no-header {
   color: #4E822F;
   font-weight: bold;
 }
+nav a.active-link {
+  color: #4E822F !important;;
+  font-weight: bold !important;;
+}
 
 .profile-icon i {
   font-size: 18px;
@@ -325,7 +329,7 @@ body.no-header {
   font-family: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
 }
 
-.grid {
+.grid-intro {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
@@ -333,23 +337,23 @@ body.no-header {
   justify-content: space-between;
 }
 
-.grid .left {
+.grid-intro .left {
   flex: 1;
   min-width: 300px;
 }
 
-.grid .left img {
+.grid-intro .left img {
   width: 100%;
   max-width: 578px;
   height: auto;
 }
 
-.grid .right {
+.grid-intro .right {
   flex: 1;
   min-width: 300px;
 }
 
-.grid .right .highlight {
+.grid-intro .right .highlight {
   color: #526F36B8;
   font-weight: 300;
   margin-bottom: 10px;
@@ -357,7 +361,7 @@ body.no-header {
   font-family: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
 }
 
-.grid .right h3 {
+.grid-intro .right h3 {
   font-size: 29px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -365,7 +369,7 @@ body.no-header {
   font-family: 'Mulish', Helvetica, Arial, Lucida, sans-serif;
 }
 
-.grid .right p {
+.grid-intro .right p {
   line-height: 1.6;
   font-family: 'Mulish', Helvetica, Arial, Lucida, sans-serif;
 }
@@ -714,6 +718,7 @@ body.no-header {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .btn-light {

@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}À propos
+{% endblock %}
+
+{% block body %}
+	<body class="pt-[179px]">
+		<section class="relative h-[60vh]">
+			<img src="img\about\Sans titre.jpeg" alt="Charpente bois" class="w-full h-full object-cover brightness-50 absolute inset-0 z-0"/>
+			<div class="relative z-10 h-full flex flex-col justify-center items-center text-white text-center px-6">
+				<h1 class="text-4xl md:text-5xl font-bold">À propos de nous</h1>
+				<p class="mt-4 text-lg max-w-2xl">
+					Trois charpentiers unis par la passion du bois, le savoir-faire traditionnel et l’envie de bâtir avec sens.
+				</p>
+			</div>
+		</section>
+
+		<!-- Mission -->
+		<section class="bg-white py-20 px-6">
+			<div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+				<img src="img\about\WhatsApp Image 2025-07-29 at 08.41.57(1).jpeg" alt="Bois brut" class="w-full md:w-1/2 rounded-lg shadow-md"/>
+				<div>
+					<h2 class="text-3xl font-bold mb-4">Notre mission</h2>
+					<p class="text-lg text-gray-700">
+						Construire des charpentes solides, respectueuses de l’environnement et inspirées des techniques du monde
+																																										            entier. Allier tradition, innovation et humanité dans chaque projet.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Histoire -->
+		<section class="py-20 bg-gray-100 px-6">
+			<div class="max-w-6xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10">
+				<img src="img\about\WhatsApp Image 2025-07-29 at 08.51.48(1).jpeg" alt="Charpentiers en voyage" class="w-full md:w-1/2 rounded-lg shadow-md"/>
+				<div class="md:w-1/2">
+					<h2 class="text-3xl font-bold mb-4">Un parcours riche d'expériences</h2>
+					<p class="text-lg text-gray-700 leading-relaxed">
+						De la France à la Nouvelle-Zélande, en passant par les Antilles ou le Pacifique, nos voyages ont façonné
+																																										            notre regard sur la charpente. Chaque chantier a été une leçon, chaque rencontre une source d'inspiration.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Valeurs -->
+		<section class="py-20 bg-white px-6">
+			<div class="max-w-6xl mx-auto">
+				<h2 class="text-3xl font-bold text-center mb-12">Nos valeurs</h2>
+				<div class="grid md:grid-cols-3 gap-8 text-center">
+					<div>
+						<img src="https://images.unsplash.com/photo-1601319463646-d20cbb63bb8c" alt="Tradition" class="w-20 h-20 mx-auto mb-4 rounded-full object-cover"/>
+						<h3 class="text-xl font-bold mb-2">Respect de la tradition</h3>
+						<p>Un savoir-faire hérité, transmis et adapté à chaque projet.</p>
+					</div>
+					<div>
+						<img src="https://images.unsplash.com/photo-1583337130417-3346a1c1d66c" alt="Innovation bois" class="w-20 h-20 mx-auto mb-4 rounded-full object-cover"/>
+						<h3 class="text-xl font-bold mb-2">Innovation durable</h3>
+						<p>Inspiration des 4 coins du monde pour créer des structures responsables.</p>
+					</div>
+					<div>
+						<img src="https://images.unsplash.com/photo-1616401786954-2d8650d0a3a4" alt="Humain" class="w-20 h-20 mx-auto mb-4 rounded-full object-cover"/>
+						<h3 class="text-xl font-bold mb-2">Travail humain & précis</h3>
+						<p>L’humain au cœur, la précision dans les gestes, la passion dans le bois.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Équipe -->
+		<section class="bg-gray-100 py-20 px-6">
+			<h2 class="text-3xl font-bold text-center mb-12">L’équipe fondatrice</h2>
+			<div
+				class="grid md:grid-cols-3 gap-10 text-center max-w-6xl mx-auto">
+				<!-- Hajatiana -->
+				<div class="bg-white shadow-md rounded-xl p-6">
+					<img src="img\about\h.raharijao.png" alt="Hajatiana" class="w-32 h-32 mx-auto rounded-full object-cover mb-4"/>
+					<h3 class="text-xl font-semibold">Hajatiana Raharijao</h3>
+					<p class="text-sm text-gray-600 mb-2">Charpentier / Co-fondateur</p>
+					<p class="text-sm">
+						Malgache, méticuleux et sensible aux structures tropicales. Bâtisseur inspiré par les cultures du Sud.
+					</p>
+				</div>
+
+				<!-- Vincent -->
+				<div class="bg-white shadow-md rounded-xl p-6">
+					<img src="img\about\vincent Laupie.jpg" alt="Vincent" class="w-32 h-32 mx-auto rounded-full object-cover mb-4"/>
+					<h3 class="text-xl font-semibold">Vincent Laupie</h3>
+					<p class="text-sm text-gray-600 mb-2">Charpentier / Co-fondateur</p>
+					<p class="text-sm">
+						Originaire du Languedoc, il incarne la rigueur, la chaleur et l’amour du bois du Sud de la France.
+					</p>
+				</div>
+
+				<!-- Kévin -->
+				<div class="bg-white shadow-md rounded-xl p-6">
+					<img src="img\about\Kevin Larive.jpeg" alt="Kévin" class="w-32 h-32 mx-auto rounded-full object-cover mb-4"/>
+					<h3 class="text-xl font-semibold">Kévin Larive</h3>
+					<p class="text-sm text-gray-600 mb-2">Charpentier / Co-fondateur</p>
+					<p class="text-sm">
+						Réunionnais, il allie finesse du geste et énergie volcanique. Artisan de la précision et de l’émotion.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Appel à l’action -->
+		<section class="bg-green-700 text-white text-center py-20 px-6">
+			<div class="max-w-2xl mx-auto">
+				<h2 class="text-3xl font-semibold mb-4">Envie de bâtir avec nous ?</h2>
+				<p class="mb-6 text-lg">
+					Nous serions ravis de vous accompagner dans votre projet bois, qu’il soit traditionnel ou innovant.
+				</p>
+				<a href="contact.html" class="bg-white text-green-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition">Nous contacter</a>
+			</div>
+		</section>
+
+		<footer class="site-footer">
+			<div class="footer-columns">
+				<div class="footer-col">
+					<div class="logo">
+						<a href="/">
+							<img src="img/logo.png" alt="Atelier Bois Logo"/>
+						</a>
+					</div>
+					<p>
+						Spécialisé dans la construction de maisons à ossature bois, charpentes et aménagements extérieurs à La
+																																																																																																																																																																																																																																																																																																																																																								            Réunion depuis 2017.
+					</p>
+				</div>
+				<div class="footer-col">
+					<h4>SERVICES</h4>
+
+					<a href="/realisations">Maisons à ossature bois</a>
+					<br/>
+					<a href="/realisations">Charpentes</a>
+					<br/>
+					<a href="/realisations">Escaliers</a>
+					<br/>
+					<a href="/realisations">Aménagement extérieur</a>
+				</div>
+				<div class="footer-col">
+					<h4>CONTACT</h4>
+					<a href="tel:+262692592422">
+						<i class="fi fi-sr-phone-flip"></i>
+						06 92 59 24 22</a>
+					<br/>
+					<a href="mailto:lescharpentiers974@gmail.com">
+						<i class="fi fi-rr-envelope"></i>lescharpentiers974@gmail.com</a>
+					<br/>
+					<a href="https://maps.app.goo.gl/DwtkLpTMsWaDZkfp7" target="_blank">
+						<i class="fi fi-bs-marker"></i>ZAE de l'éperon, 27 Rue Bass. Massoute, 97435, La Réunion</a>
+				</div>
+			</div>
+			<hr/>
+			<div class="footer-bottom">© 2025 Atelier Structure Bois. Tous droits réservés.</div>
+		</footer>
+	</body>
+{% endblock %}
