@@ -37,10 +37,14 @@
 								m²</td>
 							<td>{{ d.localisation }}</td>
 							<td>
-								{% if d.status == 'envoye' %}
-									<span class="badge bg-success">Devis envoyé</span>
-								{% else %}
+								{% if d.status == 'en_cours' %}
 									<span class="badge bg-primary">En cours d'étude</span>
+								{% elseif d.status == 'accepte' %}
+									<span class="badge bg-success">Accepté</span>
+								{% elseif d.status == 'refuse' %}
+									<span class="badge bg-danger">Refusé</span>
+								{% else %}
+									<span class="badge bg-secondary">Inconnu</span>
 								{% endif %}
 							</td>
 							<td>

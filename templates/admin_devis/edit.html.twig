@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le devis #{{ devis.id }}
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<a href="{{ path('admin_devis_list') }}" class="btn btn-secondary mb-4">← Retour à la liste</a>
+
+		<h2 class="mb-4">Modifier le devis #{{ devis.id }}</h2>
+
+		{{ form_start(form) }}
+		<div class="mb-3">
+			{{ form_label(form.status) }}
+			{{ form_widget(form.status, { attr: { class: 'form-select' } }) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(form.estimatedPrice) }}
+			{{ form_widget(form.estimatedPrice, { attr: { class: 'form-control' } }) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(form.adminNote) }}
+			{{ form_widget(form.adminNote, { attr: { class: 'form-control', rows: 5 } }) }}
+		</div>
+
+		<button class="btn btn-primary">Enregistrer</button>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

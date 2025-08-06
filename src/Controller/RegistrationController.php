@@ -46,7 +46,7 @@ class RegistrationController extends AbstractController
                 'user' => null,
             ]);
 
-            dd($devisSansUser);
+
             foreach ($devisSansUser as $devis) {
                 $devis->setUser($user);
             }

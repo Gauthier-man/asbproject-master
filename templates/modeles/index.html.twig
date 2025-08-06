@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Atelier Bois
+{% endblock %}
+
+{% block body %}
+
+
+	<h1 class="text-3xl font-bold text-center text-gray-800 mb-10">Nos Modèles Bois</h1>
+
+	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+		{% for modele in modeles %}
+			<div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-1 transition duration-200">
+				<img src="{{ modele.image }}" alt="{{ modele.nom }}" class="w-full h-48 object-cover">
+				<div class="p-4">
+					<h2 class="text-xl font-semibold text-gray-800 mb-2">{{ modele.nom }}</h2>
+					<div class="text-sm text-gray-600 mb-4 space-y-1">
+						{% if modele.type %}
+							<p>
+								<strong>Type :</strong>
+								{{ modele.type }}</p>
+						{% endif %}
+						{% if modele.surface %}
+							<p>
+								<strong>Surface :</strong>
+								{{ modele.surface }}</p>
+						{% endif %}
+						{% if modele.prix_ht %}
+							<p>
+								<strong>Prix HT :</strong>
+								{{ modele.prix_ht }}</p>
+						{% endif %}
+						{% if attribute(modele, 'charpente') is defined %}
+							<p>
+								<strong>Charpente :</strong>
+								{{ modele.charpente }}</p>
+						{% endif %}
+						{% if attribute(modele, 'temps_pose') is defined and modele.temps_pose %}
+							<p>
+								<strong>Temps de pose :</strong>
+								{{ modele.temps_pose }}</p>
+						{% endif %}
+					</div>
+					<div class="flex flex-col sm:flex-row gap-2">
+						<a href="{{ modele.pdf }}" target="_blank" class="flex-1 text-center bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">
+							Voir fiche PDF
+						</a>
+						<a href="#contact" class="flex-1 text-center bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">
+							Demander un devis
+						</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

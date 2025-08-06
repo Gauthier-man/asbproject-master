@@ -34,6 +34,12 @@ class Devis
     #[ORM\Column(type: 'text')]
     private ?string $description = null;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $adminNote = null;
+
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
+    private ?string $estimatedPrice = null;
+
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'devis')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
@@ -159,6 +165,28 @@ class Devis
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    public function getAdminNote(): ?string
+    {
+        return $this->adminNote;
+    }
+
+    public function setAdminNote(?string $adminNote): self
+    {
+        $this->adminNote = $adminNote;
+        return $this;
+    }
+
+    public function getEstimatedPrice(): ?string
+    {
+        return $this->estimatedPrice;
+    }
+
+    public function setEstimatedPrice(?string $estimatedPrice): self
+    {
+        $this->estimatedPrice = $estimatedPrice;
         return $this;
     }
 }

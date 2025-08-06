@@ -21,7 +21,7 @@ final class AccountController extends AbstractController
 
 
 
-        return $this->render('account/index.html.twig', [
+        return $this->render('account/dashboard.html.twig', [
             'user' => $user,
             'devis' => $devisList,
         ]);

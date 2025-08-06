@@ -42,7 +42,7 @@ class DevisController extends AbstractController
             ]);
         }
 
-        return $this->render('devis/index.html.twig', [
+        return $this->render('account_devis/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }

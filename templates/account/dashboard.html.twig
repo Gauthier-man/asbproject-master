@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon espace utilisateur
+{% endblock %}
+
+{% block body %}
+	<div
+		class="d-flex">
+		<!-- Sidebar -->
+		<div class="bg-light border-end p-4" style="min-width: 220px; height: 100vh;">
+			<h5 class="fw-bold mb-4">Mon Espace</h5>
+			<ul class="nav flex-column">
+				<li class="nav-item mb-2">
+					<a href="{{ path('app_account') }}" class="nav-link text-dark">🏠 Tableau de bord</a>
+				</li>
+				<li class="nav-item mb-2">
+					<a href="{{ path('app_devis') }}" class="nav-link text-dark">📝 Faire un devis</a>
+				</li>
+				<li class="nav-item mb-2">
+					<a href="#" class="nav-link text-dark">⚙️ Mon profil</a>
+				</li>
+				<li class="nav-item mt-4">
+					<a href="{{ path('app_logout') }}" class="nav-link text-danger">🚪 Déconnexion</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Main Content -->
+		<div class="p-4 flex-fill">
+			<h2 class="mb-4 fw-bold">Bienvenue
+				{{ user.prenom }}
+				{{ user.nom }}</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="bg-white shadow-sm rounded p-4 mb-4">
+						<h5 class="fw-bold mb-3">Mes demandes de devis</h5>
+						{% if devis is empty %}
+							<p class="text-muted">Vous n'avez encore soumis aucun devis.</p>
+						{% else %}
+							{% for d in devis %}
+								<div class="border rounded p-3 mb-3">
+									<p>
+										<strong>Type de projet :</strong>
+										{{ d.typeProjet }}</p>
+									<p>
+										<strong>Localisation :</strong>
+										{{ d.localisation }}</p>
+									<p>
+										<strong>Surface :</strong>
+										{{ d.surface ?? 'Non précisé' }}</p>
+									<p>
+										<strong>Délai :</strong>
+										{{ d.delai ?? 'Non précisé' }}</p>
+									<p>
+										<strong>Description :</strong>
+										{{ d.description }}</p>
+									<p>
+										<strong>Statut :</strong>
+										{% if d.status == 'en_cours' %}
+											<span class="text-primary">En cours d’étude</span>
+										{% elseif d.status == 'accepte' %}
+											<span class="text-success">Accepté</span>
+										{% elseif d.status == 'refuse' %}
+											<span class="text-danger">Refusé</span>
+										{% else %}
+											<span class="text-muted">Inconnu</span>
+										{% endif %}
+									</p>
+									{% if d.estimatedPrice %}
+										<p>
+											<strong>Prix estimé :</strong>
+											{{ d.estimatedPrice }}
+											€</p>
+									{% endif %}
+
+									{% if d.adminNote %}
+										<p>
+											<strong>Message de l'équipe :</strong>
+											{{ d.adminNote }}</p>
+									{% endif %}
+									<p>
+
+										<a href="{{ path('account_devis_index') }}" class="btn btn-outline-primary btn-sm">Voir les détails</a>
+
+
+									</p>
+								</div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

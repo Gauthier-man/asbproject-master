@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du devis
+{% endblock %}
+
+{% block body %}
+	<h2>Détail du devis</h2>
+
+	<p>
+		<strong>Type de projet :</strong>
+		{{ devis.typeProjet }}</p>
+	<p>
+		<strong>Localisation :</strong>
+		{{ devis.localisation }}</p>
+	<p>
+		<strong>Surface :</strong>
+		{{ devis.surface ?? 'Non précisé' }}</p>
+	<p>
+		<strong>Délai :</strong>
+		{{ devis.delai ?? 'Non précisé' }}</p>
+	<p>
+		<strong>Description :</strong>
+		{{ devis.description }}</p>
+	<p>
+		<strong>Statut :</strong>
+		{% if devis.status == 'en_cours' %}
+			<span class="text-primary">En cours d’étude</span>
+		{% elseif devis.status == 'accepte' %}
+			<span class="text-success">Accepté</span>
+		{% elseif devis.status == 'refuse' %}
+			<span class="text-danger">Refusé</span>
+		{% else %}
+			<span class="text-muted">Inconnu</span>
+		{% endif %}
+	</p>
+
+	<a href="{{ path('account_devis_index') }}">Retour à la liste</a>
+{% endblock %}
